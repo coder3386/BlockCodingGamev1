@@ -219,6 +219,7 @@ GameObject:
   m_Component:
   - component: {fileID: 394497587}
   - component: {fileID: 394497586}
+  - component: {fileID: 394497588}
   m_Layer: 0
   m_Name: Sky
   m_TagString: Untagged
@@ -299,6 +300,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &394497588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394497585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172f4d44a6e0c8348a22e05cb539ae4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BackgroundScaler
 --- !u!1 &603748797
 GameObject:
   m_ObjectHideFlags: 0
