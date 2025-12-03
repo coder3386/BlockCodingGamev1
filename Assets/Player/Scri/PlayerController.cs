@@ -5,6 +5,65 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 
 {
+    [Header("Settings")]
+    public float moveSpeed = 5f;
+    public float jumpForce = 10f;
+
+    private Rigidbody2D rb;
+    private float currentInputX = 0f; // 외부에서 넣어줄 입력값 (-1, 0, 1)
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // [중요] Update에서는 이제 키보드 검사를 안 합니다!
+    // 대신 물리 계산만 처리합니다.
+    void FixedUpdate()
+    {
+        // currentInputX 값에 따라 이동
+        rb.linearVelocity = new Vector2(currentInputX * moveSpeed, rb.linearVelocity.y);
+
+        // [핵심] 한 번 움직였으면 입력을 0으로 초기화 (계속 미끄러짐 방지)
+        // 노드가 "계속 눌러!"라고 명령하지 않으면 멈추게 됨
+        currentInputX = 0f;
+    }
+
+    // [외부에서 호출할 함수 1] "이쪽으로 움직여!"
+    public void SetMoveInput(float direction)
+    {
+        currentInputX = direction;
+
+        // 방향 전환(Flip)은 간단하게 scale로 처리
+        if (direction != 0)
+        {
+            Vector3 scale = transform.localScale;
+            scale.x = (direction > 0) ? 1 : -1;
+            transform.localScale = scale;
+        }
+    }
+
+    // [외부에서 호출할 함수 2] "점프해!"
+    public void DoJump()
+    {
+        // 바닥에 있을 때만 점프 (간단한 체크)
+        if (Mathf.Abs(rb.linearVelocity.y) < 0.001f)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
+
+}
+
+
+/*
+ using UnityEngine;
+
+
+
+public class PlayerController : MonoBehaviour
+
+{
 
     [Header("Movement Settings")]
 
@@ -348,3 +407,5 @@ public class PlayerController : MonoBehaviour
 
 }
 
+
+ */
