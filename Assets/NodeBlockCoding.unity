@@ -264,9 +264,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7088942353888910682, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
       propertyPath: m_Name
       value: Node_Move (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -612,9 +628,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7088942353888910682, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
       propertyPath: m_Name
       value: Node_Move (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -990,12 +1022,29 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7088942353888910682, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
       propertyPath: m_Name
       value: Node_Key
       objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4087223584562757218, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8780565940193722149, guid: 35a534f72db5a344ba35927b59645f60, type: 3}
@@ -1169,9 +1218,25 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5633591192686092655, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 7088942353888910682, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
       propertyPath: m_Name
       value: Node_Move
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224685275515430774, guid: acbfa750b7727b94b8cd942ff9f91e9b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
