@@ -57,36 +57,38 @@ public class PlayerController : MonoBehaviour
     
     void Update()
     {
-        // Get input
-        horizontalInput = Input.GetAxisRaw("Horizontal");
-        
-        // Check if grounded
+        // 1. 입력 감지 코드를 삭제했습니다. (노드가 대신 할 예정)
+
+        // 2. 바닥 체크 등 물리 계산은 그대로 유지
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);
-        
-        // Jump input
-        if (Input.GetButtonDown("Jump") && isGrounded)
+
+        // 3. 애니메이션 업데이트는 그대로 유지
+        UpdateAnimations();
+    }
+
+    public void SetInput(float direction)
+    {
+        horizontalInput = direction;
+
+        // 방향 전환 로직 (Flip)
+        if (horizontalInput > 0 && !facingRight) Flip();
+        else if (horizontalInput < 0 && facingRight) Flip();
+    }
+
+    // 노드가 "점프해!"라고 명령할 함수
+    public void DoJump()
+    {
+        if (isGrounded)
         {
             Jump();
         }
-        
-        // Handle sprite flipping
-        if (horizontalInput > 0 && !facingRight)
-        {
-            Flip();
-        }
-        else if (horizontalInput < 0 && facingRight)
-        {
-            Flip();
-        }
-        
-        // Update animations
-        UpdateAnimations();
     }
-    
+
     void FixedUpdate()
     {
         // Move the character
         Move();
+        horizontalInput = 0;
     }
     
     private void Move()
