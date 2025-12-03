@@ -45,6 +45,24 @@ public class WireManager : MonoBehaviour
             // 1. 선의 끝점을 마우스에서 -> InputPort로 바꿔줌 (자석처럼 딱 붙음)
             currentWire.endPoint = endPort;
 
+            Port inputPortScript = endPort.GetComponent<Port>();
+            if (inputPortScript != null)
+            {
+                // [추가된 부분] 만약 이 포트에 이미 다른 선이 연결되어 있었다면?
+                if (inputPortScript.connectedWire != null)
+                {
+                    // 그 옛날 선은 화면에서 지워버려라! (유령 방지)
+                    Destroy(inputPortScript.connectedWire.gameObject);
+                }
+
+                // 새 선으로 등록
+                inputPortScript.connectedWire = currentWire;
+            }
+            
+            // 2. 출발점(Output) 포트에 등록
+            Port outputPortScript = currentWire.startPoint.GetComponent<Port>();
+            if (outputPortScript != null) outputPortScript.connectedWire = currentWire;
+
             // 2. 이제 이 선은 "연결 완료"된 거니까 currentWire 변수를 비워줌
             // (그래야 StopDrawingWire가 실행돼도 삭제되지 않음)
             currentWire = null;

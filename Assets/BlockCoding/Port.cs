@@ -7,6 +7,8 @@ public class Port : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHand
     public bool isOutput = false;
     public WireManager manager;
 
+    public WireBezier connectedWire;
+
     void Start()
     {
         manager = FindObjectOfType<WireManager>();

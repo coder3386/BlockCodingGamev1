@@ -34,11 +34,14 @@ public class PlayerController : MonoBehaviour
     {
         currentInputX = direction;
 
-        // 방향 전환(Flip)은 간단하게 scale로 처리
+        // 방향 전환 (Flip)
         if (direction != 0)
         {
             Vector3 scale = transform.localScale;
-            scale.x = (direction > 0) ? 1 : -1;
+
+            // 중요: 1이 아니라 '현재 내 크기(Mathf.Abs)'를 기준으로 부호만 바꿈
+            scale.x = (direction > 0) ? Mathf.Abs(scale.x) : -Mathf.Abs(scale.x);
+
             transform.localScale = scale;
         }
     }
