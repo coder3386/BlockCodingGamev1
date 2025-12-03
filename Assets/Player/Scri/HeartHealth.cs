@@ -1,16 +1,20 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class HeartHealth : MonoBehaviour
 {
-    [Header("¼³Á¤")]
+    [Header("ì„¤ì •")]
     public int maxHealth = 3;
     public int currentHealth;
 
-    [Header("UI ¿¬°á")]
-    public Image[] hearts;       // ÇÏÆ® ÀÌ¹ÌÁö 3°³¸¦ ¼ø¼­´ë·Î ³ÖÀ» ¹è¿­
-    public Sprite fullHeart;     // ²Ë Âù ÇÏÆ® ±×¸²
-    public Sprite emptyHeart;    // ºó ÇÏÆ® ±×¸² (È¤Àº ±úÁø ÇÏÆ®)
+    [Header("UI ì—°ê²°")]
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    // â˜… ìƒˆë¡œ ì¶”ê°€ëœ ë¶€ë¶„: ê²Œì„ ì˜¤ë²„ ê¸€ì ì—°ê²°í•  ì¹¸
+    public GameObject gameOverText;
 
     void Start()
     {
@@ -21,9 +25,6 @@ public class HeartHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
-
-        if (currentHealth < 0) currentHealth = 0;
-
         UpdateHeartUI();
 
         if (currentHealth <= 0)
@@ -34,39 +35,41 @@ public class HeartHealth : MonoBehaviour
 
     void UpdateHeartUI()
     {
-        // ÇÏÆ® °³¼ö¸¸Å­ ¹İº¹¹®À» µ½´Ï´Ù
+        // (ê¸°ì¡´ í•˜íŠ¸ UI ì½”ë“œ ê·¸ëŒ€ë¡œ ë‘ì„¸ìš”)
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < currentHealth)
             {
-                // ÇöÀç Ã¼·Âº¸´Ù ÀÎµ¦½º°¡ ÀÛÀ¸¸é '²Ë Âù ÇÏÆ®'
                 hearts[i].sprite = fullHeart;
-                hearts[i].color = Color.white; // ¹à°Ô Ç¥½Ã
+                hearts[i].color = Color.white;
             }
             else
             {
-                // Ã¼·ÂÀÌ ±ğÀÎ ºÎºĞÀº 'ºó ÇÏÆ®'
                 hearts[i].sprite = emptyHeart;
-                // ¸¸¾à ºó ÇÏÆ® ÀÌ¹ÌÁö°¡ ¾ø´Ù¸é, ¾Æ·¡ ÄÚµå¸¦ ½á¼­ ¹İÅõ¸íÇÏ°Ô ¸¸µå¼¼¿ä
-                // hearts[i].color = new Color(1, 1, 1, 0.3f); 
             }
 
-            // ÃÖ´ë Ã¼·Â(3)º¸´Ù ÇÏÆ® ½½·ÔÀÌ ´õ ¸¹´Ù¸é ºÒÇÊ¿äÇÑ °Ç ²ô±â
-            if (i < maxHealth)
-            {
-                hearts[i].enabled = true;
-            }
-            else
-            {
-                hearts[i].enabled = false;
-            }
+            if (i < maxHealth) hearts[i].enabled = true;
+            else hearts[i].enabled = false;
         }
     }
 
     void Die()
     {
-        Debug.Log("ÇÃ·¹ÀÌ¾î »ç¸Á!");
-        // »ç¸Á Ã³¸® ·ÎÁ÷ (¾Ö´Ï¸ŞÀÌ¼Ç, °ÔÀÓ¿À¹ö µî)
-        gameObject.SetActive(false); // ÇÃ·¹ÀÌ¾î ºñÈ°¼ºÈ­
+        Debug.Log("ì‚¬ë§!");
+
+        // 1. ìˆ¨ê²¨ë†¨ë˜ "GAME OVER" ê¸€ìë¥¼ ì¼­ë‹ˆë‹¤.
+        if (gameOverText != null)
+        {
+            gameOverText.SetActive(true);
+        }
+
+        // 2. ë°”ë¡œ ì¬ì‹œì‘í•˜ì§€ ì•Šê³ , 1.5ì´ˆ ë’¤ì— "ReloadScene" í•¨ìˆ˜ë¥¼ ì‹¤í–‰í•©ë‹ˆë‹¤.
+        Invoke("ReloadScene", 1.5f);
+    }
+
+    // 1.5ì´ˆ ë’¤ì— ì‹¤í–‰ë  ì¬ì‹œì‘ í•¨ìˆ˜
+    void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
