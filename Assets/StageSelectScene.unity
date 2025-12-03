@@ -1030,6 +1030,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeBtn
   actionType: 0
   sceneName: GameStage_03
+  needClearStage: 2
 --- !u!61 &833016666
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1503,6 +1504,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeBtn
   actionType: 0
   sceneName: GameStage_02
+  needClearStage: 1
 --- !u!61 &1217776435
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1655,6 +1657,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeBtn
   actionType: 0
   sceneName: GameStage_05
+  needClearStage: 4
 --- !u!61 &1238049305
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1956,6 +1959,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeBtn
   actionType: 0
   sceneName: MainScene 2
+  needClearStage: 0
 --- !u!1 &1681166883
 GameObject:
   m_ObjectHideFlags: 0
@@ -2317,6 +2321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SceneChangeBtn
   actionType: 0
   sceneName: GameStage_04
+  needClearStage: 3
 --- !u!61 &2107762599
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -3,6 +3,10 @@ using UnityEngine.SceneManagement;
 
 public class FinishPoint : MonoBehaviour
 {
+    [Header("스테이지 설정 (중요!)")]
+    // 인스펙터 창에서 1스테이지면 1, 2스테이지면 2를 입력하세요.
+    public int currentStageIndex = 1;
+
     [Header("UI 연결")]
     public GameObject clearPanel;  // 1단계에서 만든 UI 패널(또는 캔버스)
 
@@ -21,6 +25,11 @@ public class FinishPoint : MonoBehaviour
     void GameClear()
     {
         Debug.Log("게임 클리어!");
+
+        // 예: currentStageIndex가 1이면 "Stage_1"이라는 이름으로 1(True)을 저장
+        PlayerPrefs.SetInt("Stage_" + currentStageIndex, 1);
+        PlayerPrefs.Save(); // 저장 확정
+        Debug.Log("스테이지 " + currentStageIndex + " 클리어 정보 저장 완료");
 
         // 1. 숨겨뒀던 클리어 UI를 켭니다.
         if (clearPanel != null)
