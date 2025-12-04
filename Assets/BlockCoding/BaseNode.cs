@@ -16,17 +16,21 @@ public class BaseNode : MonoBehaviour
     // 다음 순서 노드를 찾는 함수 (Flow)
     public BaseNode GetNextNode(string portName)
     {
-        // 1. 내 자식들 중에서 이름이 맞는 오브젝트(포트)를 찾는다
         Transform portTrans = transform.Find(portName);
         if (portTrans == null) return null;
 
-        // [에러 해결 포인트] 여기서 port라는 변수를 확실하게 선언합니다.
         Port port = portTrans.GetComponent<Port>();
 
-        // port 변수가 있고, 그 포트에 선(connectedWire)이 연결되어 있다면?
+        // [수정된 부분] 안전장치 추가
         if (port != null && port.connectedWire != null)
         {
-            // 선의 끝점(도착지)에 있는 노드를 반환 (다음 실행할 노드)
+            // ★ 추가: 선은 있는데 '끝점(endPoint)'이 비어있다면? -> 무시하고 null 반환
+            if (port.connectedWire.endPoint == null)
+            {
+                return null;
+            }
+
+            // 선의 끝점(도착지)에 있는 노드를 반환
             return port.connectedWire.endPoint.GetComponentInParent<BaseNode>();
         }
         return null;
