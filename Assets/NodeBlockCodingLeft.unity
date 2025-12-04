@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::MoveNode
   nodeName: 
   inputField: {fileID: 0}
-  direction: {x: 1, y: 0}
+  direction: {x: -1, y: 0}
 --- !u!114 &66809379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!223 &380658586
 Canvas:
   m_ObjectHideFlags: 0
