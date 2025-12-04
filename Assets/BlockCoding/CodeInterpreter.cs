@@ -70,6 +70,14 @@ public class CodeInterpreter : MonoBehaviour
                     player.SetMoveInput(move.direction.x);
                     currentNode = currentNode.GetNextNode("NextPort");
                 }
+                else if (currentNode is JumpNode)
+                {
+                    // 플레이어의 DoJump 함수 호출
+                    player.DoJump();
+
+                    // 점프 후 다음 블록으로 이동 (없으면 끝남)
+                    currentNode = currentNode.GetNextNode("NextPort");
+                }
                 else if (currentNode is IfNode)
                 {
                     IfNode ifNode = (IfNode)currentNode;
