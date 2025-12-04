@@ -3,18 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneChangeBtn : MonoBehaviour
 {
-    // 버튼의 종류를 고르는 목록 (이동 vs 종료)
     public enum ButtonType { MoveScene, ExitGame }
     public ButtonType actionType;
 
     [Header("설정")]
-    // 이동할 씬 이름 (종료 버튼일 때는 비워도 됨)
     public string sceneName;
 
     [Tooltip("이 버튼을 누르기 위해 클리어해야 하는 스테이지 번호 (0이면 조건 없음)")]
     public int needClearStage = 0;
 
-    private bool isLocked = false; // 잠금 상태 확인용 변수
+    private bool isLocked = false;
 
     void Start()
     {
@@ -25,15 +23,14 @@ public class SceneChangeBtn : MonoBehaviour
             return;
         }
 
-        // 저장된 데이터를 확인 (예: needClearStage가 1이면 "Stage_1"이 1인지 확인)
+        // 저장된 데이터 확인
         int isCleared = PlayerPrefs.GetInt("Stage_" + needClearStage, 0);
 
         if (isCleared == 0) // 아직 안 깼다면
         {
-            isLocked = true; // 잠금 설정
+            isLocked = true;
 
-            // 시각적으로 잠긴 걸 보여주기 위해 색깔을 회색으로 변경 (선택사항)
-            // 스프라이트 렌더러가 있는 경우에만 작동
+            // 스프라이트(그림)일 경우 색깔 변경
             SpriteRenderer sprite = GetComponent<SpriteRenderer>();
             if (sprite != null)
             {
@@ -42,7 +39,20 @@ public class SceneChangeBtn : MonoBehaviour
         }
     }
 
+    // [기존 방식] 게임 속 물체(Collider)를 클릭했을 때
     private void OnMouseDown()
+    {
+        ExecuteAction();
+    }
+
+    // ★ [새로운 방식] UI 버튼(Button)을 클릭했을 때 (이걸 연결할 겁니다!)
+    public void OnUIClick()
+    {
+        ExecuteAction();
+    }
+
+    // 실제 동작을 수행하는 함수 (중복 방지용으로 따로 뺌)
+    void ExecuteAction()
     {
         if (isLocked == true)
         {
